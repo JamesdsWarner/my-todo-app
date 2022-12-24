@@ -1,4 +1,5 @@
 import TextareaAutosize from "react-textarea-autosize";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const TodoPostitWrapper = styled.div`
@@ -9,13 +10,55 @@ export const TodoPostitWrapper = styled.div`
   min-height: 300px;
   min-width: 300px;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
-export const Chevron = styled.div`
+export const DropdownWrapper = styled.div``;
+
+export const DropdownContentsWrapper = styled.div`
+  position: absolute;
+  margin-left: 18px;
+  transition: all 0.25s ease;
+  margin-top: ${(props) => (props.clicked ? 40 : 20)}px;
+  opacity: ${(props) => (props.clicked ? 1 : 0)};
+`;
+
+export const ColorWheelWrapper = styled.div``;
+
+export const ColorWheel = styled.img`
+  width: 20px;
+  cursor: pointer;
+`;
+
+export const ClearText = styled.p`
+  text-align: center;
+  margin-left: -8px;
+  margin-top: 4px;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const ChevronWrapper = styled.div`
   z-index: 9999;
+  position: absolute;
+  margin-left: 20px;
+  top: 0;
+  padding-top: 14px;
+
   > * {
     color: black;
+    transform: rotate(${(props) => (props.clicked ? 180 : 0)}deg);
   }
+`;
+
+export const Chevron = styled(FontAwesomeIcon)`
+  transition: all 0.25s ease;
+
+  cursor: pointer;
 `;
 
 export const TodoPostitInput = styled(TextareaAutosize)`
@@ -28,6 +71,19 @@ export const TodoPostitInput = styled(TextareaAutosize)`
   width: 100%;
   overflow: hidden;
   resize: none;
+  color: ${(props) =>
+    props.colour === "yellow" || props.colour === "blue" || props.colour === "green"
+      ? "black"
+      : "white"};
+  text-decoration: ${(props) => (props.isPostitComplete ? "line-through" : "")};
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${(props) =>
+      props.colour === "yellow" || props.colour === "blue" || props.colour === "green"
+        ? ""
+        : "white"};
+  }
 `;
 
 export const DeleteIcon = styled.span`
@@ -75,4 +131,9 @@ export const DoneButton = styled.button`
   &:hover {
     background-color: white;
   }
+`;
+
+export const X = styled.h2`
+  font-size: 30px;
+  margin-top: 8px;
 `;

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import TodoPostit from "../TodoPostit/TodoPostit.component";
-import Checkmark from "../Checkmark/Checkmark.component";
 import * as Styled from "./TodoPostits.styles";
 
 const TodoPostits = () => {
@@ -35,6 +34,7 @@ const TodoPostits = () => {
               postitsArray={postitsArray}
               key={i}
               index={i}
+              colour={postit.colour}
             />
           );
         })}
