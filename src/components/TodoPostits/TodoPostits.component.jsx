@@ -15,12 +15,16 @@ const TodoPostits = () => {
   };
 
   const handleAddButtonClick = () => {
-    if (colourNumber !== 4) {
-      setColourNumber(colourNumber + 1);
+    if (postitsArray.length < 8) {
+      if (colourNumber !== 4) {
+        setColourNumber(colourNumber + 1);
+      } else {
+        setColourNumber(0);
+      }
+      setPostitsArray([...postitsArray, { note: "", colour: `${colours[colourNumber]}` }]);
     } else {
-      setColourNumber(0);
+      alert("Sorry, you have reached the maximum amount of postits");
     }
-    setPostitsArray([...postitsArray, { note: "", colour: `${colours[colourNumber]}` }]);
   };
 
   return (
@@ -39,7 +43,18 @@ const TodoPostits = () => {
           );
         })}
       </Styled.TodoPostitsContainer>
-      <Styled.AddPostitButton onClick={handleAddButtonClick}>+</Styled.AddPostitButton>
+
+      {postitsArray.length < 1 && (
+        <Styled.AddPostitHeader>
+          Click the "+" button below to add a postit note...
+        </Styled.AddPostitHeader>
+      )}
+      <Styled.AddPostitButton
+        onClick={handleAddButtonClick}
+        postitsArrayLength={postitsArray.length}
+      >
+        +
+      </Styled.AddPostitButton>
     </Styled.TodoPostitsWrapper>
   );
 };

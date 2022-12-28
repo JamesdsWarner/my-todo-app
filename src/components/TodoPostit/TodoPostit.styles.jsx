@@ -34,12 +34,12 @@ export const ClearText = styled.p`
   text-align: center;
   margin-left: -8px;
   margin-top: 4px;
-  opacity: 0.7;
   transition: all 0.25s ease;
+  color: ${(props) =>
+    props.colour === "yellow" || props.colour === "blue" || props.colour === "green"
+      ? "black"
+      : "white"};
   cursor: pointer;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 export const ChevronWrapper = styled.div`
@@ -133,7 +133,6 @@ export const DoneButton = styled.button`
   }
 `;
 
-export const X = styled.h2`
-  font-size: 30px;
-  margin-top: 8px;
+export const Refresh = styled(FontAwesomeIcon)`
+  font-size: 20px;
 `;

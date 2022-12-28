@@ -1,16 +1,13 @@
 import { useState } from "react";
 import Checkmark from "../Checkmark/Checkmark.component";
 import ColourPicker from "../ColourPicker/ColourPicker.component";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 import colorWheel from "./color-wheel.png";
 
 import * as Styled from "./TodoPostit.styles";
 
 const TodoPostit = ({ setPostitsArray, index, postitsArray, postitValue, colour }) => {
   const [todoNote, setTodoNote] = useState({});
-  const [fontSize, setFontSize] = useState(23);
-  const [alignText, setAlignText] = useState("center");
-  const [maxRow, setMaxRow] = useState(5);
   const [isChevronClicked, setIsChevronClicked] = useState(false);
   const [isColourClicked, setIsColourClicked] = useState(false);
   const [isPostitComplete, setIsPostitComplete] = useState(false);
@@ -27,33 +24,6 @@ const TodoPostit = ({ setPostitsArray, index, postitsArray, postitValue, colour 
         return obj;
       })
     );
-
-    // setPostitsArray([
-
-    // if (todoNote.length > 124) {
-    //   setFontSize(146 - todoNote.length);
-    //   setAlignText("left");
-
-    // }
-    // console.log(todoNote.length * 1.12);
-    // console.log(fontSize * maxRow);
-    // console.log(maxRow);
-    // console.log(todoNote.length);
-    if (todoNote.length > 105) {
-      setMaxRow(Math.ceil(1 + todoNote.length / fontSize));
-
-      if (todoNote.length > 124) {
-        setFontSize(todoNote.length / maxRow);
-        setFontSize(146 - todoNote.length + 0.99);
-        setAlignText("left");
-      }
-    }
-    if (todoNote.length <= 124) {
-      setAlignText("center");
-      if (!fontSize === 30) {
-        setFontSize(fontSize + 1);
-      }
-    }
   };
 
   const handleRemoveNote = () => {
@@ -131,18 +101,20 @@ const TodoPostit = ({ setPostitsArray, index, postitsArray, postitValue, colour 
             colours={colours}
             isChevronClicked={isChevronClicked}
           />
-          <Styled.ClearText onClick={handleClearButtonClick}>Clear</Styled.ClearText>
+          <Styled.ClearText colour={colour} onClick={handleClearButtonClick}>
+            Clear
+          </Styled.ClearText>
         </Styled.DropdownContentsWrapper>
       </Styled.DropdownWrapper>
       <Styled.TodoPostitInput
         rows={10}
         placeholder="Add a task..."
         onChange={(e) => handleChange(e)}
-        fontSize={fontSize}
-        maxLength={124}
+        fontSize={23}
+        maxLength={104}
         value={postitsArray[index].note}
-        alignText={alignText}
-        maxRows={maxRow}
+        alignText={"center"}
+        maxRows={5}
         colour={colour}
         isPostitComplete={isPostitComplete}
         disabled={isPostitComplete}
@@ -152,7 +124,11 @@ const TodoPostit = ({ setPostitsArray, index, postitsArray, postitValue, colour 
 
       <Styled.DoneButtonWrapper>
         <Styled.DoneButton onClick={handleFinishedPostit}>
-          {isPostitComplete ? <Styled.X>X</Styled.X> : <Checkmark />}
+          {isPostitComplete ? (
+            <Styled.Refresh icon={faArrowsRotate}>X</Styled.Refresh>
+          ) : (
+            <Checkmark />
+          )}
         </Styled.DoneButton>
       </Styled.DoneButtonWrapper>
     </Styled.TodoPostitWrapper>

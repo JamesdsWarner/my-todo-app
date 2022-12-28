@@ -6,14 +6,6 @@ export const CheckmarkWrapper = styled.span`
   height: 22px;
   transform: rotate(45deg);
   scale: 2;
-  opacity: 0.6;
-
-  &:hover {
-    opacity: 1.2;
-    /* > * {
-      background-color: white;
-    } */
-  }
 `;
 
 export const CheckmarkStem = styled.div`
