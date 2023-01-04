@@ -6,7 +6,7 @@ const useAuth = () => {
 
   const verifyAuth = async () => {
     try {
-      const res = await axios.get('https://todo-back.herokuapp.com/api/auth/is_logged_in');
+      const res = await axios.get('https://todo-back.herokuapp.com/api/auth/is_logged_in/');
       return res.data;
     } catch (err) {
       console.log(err);
