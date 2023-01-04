@@ -19,7 +19,7 @@ const TodoPostits = () => {
       return;
     }
     try {
-      const { data } = await axios.post('/api/tasks', {
+      const { data } = await axios.post('https://todo-back.herokuapp.com/api/tasks', {
         title: newTask,
         colour: newTaskColour,
       });
@@ -36,7 +36,7 @@ const TodoPostits = () => {
 
   const getTasks = async () => {
     try {
-      const { data } = await axios.get('/api/tasks/myTasks');
+      const { data } = await axios.get('https://todo-back.herokuapp.com/api/tasks/myTasks');
       setPostitsArray(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
     } catch (err) {
       console.log(err);
@@ -59,7 +59,7 @@ const TodoPostits = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`https://todo-back.herokuapp.com/api/tasks/${id}`);
       toast.success('Task Deleted');
       setPostitsArray(postitsArray.filter((task) => task._id !== id));
     } catch (err) {

@@ -13,7 +13,7 @@ const EditProfileForm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get('/api/users/me');
+        const { data } = await axios.get('https://todo-back.herokuapp.com/api/users/me');
         setUser(data);
       } catch (err) {
         console.log(err);
@@ -31,7 +31,7 @@ const EditProfileForm = () => {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put('/api/users/me', user);
+      const res = await axios.put('https://todo-back.herokuapp.com/api/users/me', user);
       toast.success('Profile updated');
       setUser(res.data);
     } catch (err) {
