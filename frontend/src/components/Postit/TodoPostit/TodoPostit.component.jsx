@@ -47,7 +47,7 @@ const TodoPostit = ({
 
   const changeTaskColour = async (newColour) => {
     try {
-      await axios.put(`https://todo-back.herokuapp.com/api/tasks/${index}`, {
+      await axios.put(`/api/tasks/${index}`, {
         colour: newColour,
       });
       setPostitColour(newColour);
@@ -59,7 +59,7 @@ const TodoPostit = ({
 
   const changeTaskCompletion = async () => {
     try {
-      await axios.put(`https://todo-back.herokuapp.com/api/tasks/${index}`, {
+      await axios.put(`/api/tasks/${index}`, {
         completed: !isCompleted,
       });
       setIsCompleted(!isCompleted);

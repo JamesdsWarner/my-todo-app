@@ -2,11 +2,11 @@
   "name": "my-todo-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://todo-back.herokuapp.com/",
+  "proxy": "https://my-todo-app-back-production.up.railway.app",
   "server":{
     "proxy" : {
       "/api": {
-        "target": "https://todo-back.herokuapp.com/"
+        "target": "https://my-todo-app-back-production.up.railway.app"
       }
     }
   },

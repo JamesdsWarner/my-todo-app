@@ -10,7 +10,7 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      await axios.post('https://todo-back.herokuapp.com/api/auth/login', {
+      await axios.post('/api/auth/login/', {
         email,
         password,
       });
