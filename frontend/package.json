@@ -1,14 +1,7 @@
 {
   "name": "my-todo-app",
   "version": "0.1.0",
-  "proxy": "https://todo-back.herokuapp.com",
-  "server": {
-    "proxy": {
-      "/api": {
-        "target": "https://todo-back.herokuapp.com"
-      }
-    }
-  },
+
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -24,6 +17,7 @@
     "git": "^0.1.5",
     "moment": "^2.29.4",
     "nginx": "^1.0.8",
+    "node-fetch": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",

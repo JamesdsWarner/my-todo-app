@@ -1,43 +1,38 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import fetch from 'node-fetch';
-
-// import Cookies from 'universal-cookie';
 
 import * as Styled from '../Auth.styles';
 
 const Login = () => {
-  //   const cookies = new Cookies();
-
   const navigate = useNavigate();
   const login = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
-        method: 'POST',
-        body: JSON.stringify(email, password),
-        headers: { withCredentials: true, credentials: 'include' },
-      })
-        .then((res) => res.json())
-        .then((json) => console.log(json));
-      //   const res = await axios.post(
-      //     'https://todo-back.herokuapp.com/api/auth/login',
-      //     {
-      //       email,
-      //       password,
-      //       //
+      //   const response = await fetch('https://todo-back.herokuapp.com/api/auth/login', {
+      //     method: 'POST',
+      //     body: JSON.stringify({ email: email, password: password }),
+      //     mode: 'cors',
+      //     headers: {
+      //       'Content-Type': 'text/plain',
+      //       // 'Content-Type': 'application/x-www-form-urlencoded',
       //     },
-      //     { withCredentials: true, credentials: 'include' }
-      //   );
-      console.log(res);
-      //   cookies.set('token', res.data.token, { path: '/' });
+      //   });
+      //   console.log(response);
+      const res = await axios.post(
+        'https://todo-back.herokuapp.com/api/auth/login',
+        {
+          email,
+          password,
+        },
+        { withCredentials: true, credentials: 'include', headers: { 'Content-Type': 'text/plain' } }
+      );
 
       navigate('/');
 
-      console.log(res);
+      //   console.log(res);
 
       toast.success('Login Success');
     } catch (err) {

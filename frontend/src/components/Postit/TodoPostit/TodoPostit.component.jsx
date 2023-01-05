@@ -47,15 +47,9 @@ const TodoPostit = ({
 
   const changeTaskColour = async (newColour) => {
     try {
-      await axios.put(
-        `/api/tasks/${index}`,
-        {
-          colour: newColour,
-        },
-        {
-          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
-        }
-      );
+      await axios.put(`https://todo-back.herokuapp.com/api/tasks/${index}`, {
+        colour: newColour,
+      });
       setPostitColour(newColour);
       toast.success('Task updated successfully');
     } catch (err) {
@@ -65,15 +59,9 @@ const TodoPostit = ({
 
   const changeTaskCompletion = async () => {
     try {
-      await axios.put(
-        `/api/tasks/${index}`,
-        {
-          completed: !isCompleted,
-        },
-        {
-          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
-        }
-      );
+      await axios.put(`https://todo-back.herokuapp.com/api/tasks/${index}`, {
+        completed: !isCompleted,
+      });
       setIsCompleted(!isCompleted);
       toast.success('Task updated successfully');
     } catch (err) {
