@@ -6,11 +6,10 @@ const useAuth = () => {
 
   const verifyAuth = async (e) => {
     try {
-      const res = await axios.get('/api/auth/is_logged_in/', {
-        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
-      });
-      console.log(res.data);
+      const res = await axios.get('http://localhost:8000/api/auth/is_logged_in/');
+      cookies.set('token', res.data.token, options);
 
+      console.log(res.data);
       return res.data;
     } catch (err) {
       console.log(err);

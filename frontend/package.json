@@ -1,14 +1,7 @@
 {
   "name": "my-todo-app",
   "version": "0.1.0",
-  "proxy": "https://my-todo-app-back-production.up.railway.app",
-  "server": {
-    "proxy": {
-      "/api": {
-        "target": "https://my-todo-app-back-production.up.railway.app"
-      }
-    }
-  },
+
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -33,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && echo '/api/*  https://my-todo-app-back-production.up.railway.app/:splat  200' | cat >build/_redirects ",
+    "build": "react-scripts build && echo '/api/*  https://todo-back.herokuapp.com/:splat  200' | cat >build/_redirects ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

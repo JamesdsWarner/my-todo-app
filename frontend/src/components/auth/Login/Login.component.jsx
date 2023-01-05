@@ -11,17 +11,18 @@ const Login = () => {
     const password = e.target.password.value;
     try {
       const res = await axios.post(
-        '/api/auth/login/',
+        'http://localhost:8000/api/auth/login/',
         {
           email,
           password,
         },
         {
-          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+          baseUrl: 'https://todo-back.herokuapp.com',
         }
       );
-      console.log(res);
       navigate('/');
+
+      console.log(res);
 
       toast.success('Login Success');
     } catch (err) {

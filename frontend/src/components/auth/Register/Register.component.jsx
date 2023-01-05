@@ -11,9 +11,7 @@ const Register = () => {
       password: e.target.password.value,
     };
     try {
-      await axios.post('/api/auth/register', user, {
-        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
-      });
+      await axios.post('https://todo-back.herokuapp.com/api/auth/register', user);
       toast.success('Register Success');
     } catch (err) {
       console.log(err);
