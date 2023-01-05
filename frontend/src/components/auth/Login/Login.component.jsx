@@ -10,10 +10,16 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      const res = await axios.post('/api/auth/login/', {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        '/api/auth/login/',
+        {
+          email,
+          password,
+        },
+        {
+          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+        }
+      );
       console.log(res);
       navigate('/');
 

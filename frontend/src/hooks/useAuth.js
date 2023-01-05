@@ -6,7 +6,9 @@ const useAuth = () => {
 
   const verifyAuth = async (e) => {
     try {
-      const res = await axios.get('/api/auth/is_logged_in/');
+      const res = await axios.get('/api/auth/is_logged_in/', {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       console.log(res.data);
 
       return res.data;

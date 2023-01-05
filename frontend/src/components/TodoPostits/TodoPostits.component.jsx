@@ -19,10 +19,16 @@ const TodoPostits = () => {
       return;
     }
     try {
-      const { data } = await axios.post('/api/tasks', {
-        title: newTask,
-        colour: newTaskColour,
-      });
+      const { data } = await axios.post(
+        '/api/tasks',
+        {
+          title: newTask,
+          colour: newTaskColour,
+        },
+        {
+          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+        }
+      );
       toast.success('New Task Created');
       setPostitsArray([{ ...data }, ...postitsArray]);
       setNewTask('');
@@ -36,7 +42,9 @@ const TodoPostits = () => {
 
   const getTasks = async () => {
     try {
-      const { data } = await axios.get('/api/tasks/myTasks');
+      const { data } = await axios.get('/api/tasks/myTasks', {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       setPostitsArray(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
     } catch (err) {
       console.log(err);
@@ -59,7 +67,9 @@ const TodoPostits = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`https://my-todo-app-back-production.up.railway.app/api/tasks/${id}`);
+      await axios.delete(`https://my-todo-app-back-production.up.railway.app/api/tasks/${id}`, {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       toast.success('Task Deleted');
       setPostitsArray(postitsArray.filter((task) => task._id !== id));
     } catch (err) {

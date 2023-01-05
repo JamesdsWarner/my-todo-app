@@ -11,7 +11,9 @@ const Navbar = () => {
 
   const getUser = async () => {
     try {
-      const { data } = await axios.get('/api/users/me');
+      const { data } = await axios.get('/api/users/me', {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       setUser(data);
     } catch (err) {
       console.log(err);
@@ -24,7 +26,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get('/api/auth/logout');
+      await axios.get('/api/auth/logout', {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       setUser(null);
       toast.success('User Logged Out');
       navigate('/auth');

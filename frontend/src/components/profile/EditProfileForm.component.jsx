@@ -13,7 +13,9 @@ const EditProfileForm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get('/api/users/me');
+        const { data } = await axios.get('/api/users/me', {
+          baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+        });
         setUser(data);
       } catch (err) {
         console.log(err);
@@ -31,7 +33,9 @@ const EditProfileForm = () => {
   const updateProfile = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put('/api/users/me', user);
+      const res = await axios.put('/api/users/me', user, {
+        baseUrl: 'https://my-todo-app-back-production.up.railway.app',
+      });
       toast.success('Profile updated');
       setUser(res.data);
     } catch (err) {
