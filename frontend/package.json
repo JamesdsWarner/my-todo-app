@@ -1,10 +1,9 @@
 {
   "name": "my-todo-app",
   "version": "0.1.0",
-  "private": true,
   "proxy": "https://my-todo-app-back-production.up.railway.app",
-  "server":{
-    "proxy" : {
+  "server": {
+    "proxy": {
       "/api": {
         "target": "https://my-todo-app-back-production.up.railway.app"
       }
@@ -20,6 +19,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "axios-https-proxy-fix": "^0.17.1",
     "babel-plugin-macros": "^3.1.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -37,7 +37,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
@@ -50,5 +49,4 @@
       "last 1 safari version"
     ]
   }
-
 }

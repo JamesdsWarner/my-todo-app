@@ -10,11 +10,13 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      await axios.post('/api/auth/login/', {
+      const res = await axios.post('/api/auth/login/', {
         email,
         password,
       });
+      console.log(res);
       navigate('/');
+
       toast.success('Login Success');
     } catch (err) {
       console.log(err);
