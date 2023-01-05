@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
 const useAuth = () => {
   const [auth, setAuth] = useState();
 
   const verifyAuth = async (e) => {
     try {
-      const res = await axios.get('http://localhost:8000/api/auth/is_logged_in/');
-      cookies.set('token', res.data.token, options);
+      const res = await axios.get('https://todo-back.herokuapp.com/api/auth/is_logged_in/', {});
 
       console.log(res.data);
       return res.data;

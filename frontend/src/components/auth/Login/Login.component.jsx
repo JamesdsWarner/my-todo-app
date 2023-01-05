@@ -1,25 +1,40 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import fetch from 'node-fetch';
+
+// import Cookies from 'universal-cookie';
+
 import * as Styled from '../Auth.styles';
 
 const Login = () => {
+  //   const cookies = new Cookies();
+
   const navigate = useNavigate();
   const login = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      const res = await axios.post(
-        'http://localhost:8000/api/auth/login/',
-        {
-          email,
-          password,
-        },
-        {
-          baseUrl: 'https://todo-back.herokuapp.com',
-        }
-      );
+      const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'POST',
+        body: JSON.stringify(email, password),
+        headers: { withCredentials: true, credentials: 'include' },
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+      //   const res = await axios.post(
+      //     'https://todo-back.herokuapp.com/api/auth/login',
+      //     {
+      //       email,
+      //       password,
+      //       //
+      //     },
+      //     { withCredentials: true, credentials: 'include' }
+      //   );
+      console.log(res);
+      //   cookies.set('token', res.data.token, { path: '/' });
+
       navigate('/');
 
       console.log(res);
