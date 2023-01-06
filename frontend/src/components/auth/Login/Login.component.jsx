@@ -22,7 +22,7 @@ const Login = () => {
       //   });
       //   console.log(response);
       const res = await axios.post(
-        'https://todo-back.herokuapp.com/api/auth/login',
+        '/api/auth/login',
         {
           email,
           password,
