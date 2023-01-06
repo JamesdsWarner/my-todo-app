@@ -5,7 +5,10 @@ const useAuth = () => {
 
   const verifyAuth = async (e) => {
     try {
-      const res = await axios.get('https://todo-back.herokuapp.com/api/auth/is_logged_in/', {});
+      const res = await axios.get('/api/auth/is_logged_in/', {
+        withCredentials: true,
+        credentials: 'include',
+      });
 
       console.log(res.data);
       return res.data;
