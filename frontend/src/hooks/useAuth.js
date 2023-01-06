@@ -5,10 +5,13 @@ const useAuth = () => {
 
   const verifyAuth = async (e) => {
     try {
-      const res = await axios.get('/api/auth/is_logged_in/', {
-        withCredentials: true,
-        credentials: 'include',
-      });
+      const res = await axios.get(
+        'http://bejewelled-zuccutto-dfa6b6.netlify.app/api/auth/is_logged_in/',
+        {
+          withCredentials: true,
+          credentials: 'include',
+        }
+      );
 
       console.log(res.data);
       return res.data;

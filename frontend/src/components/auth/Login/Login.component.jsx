@@ -22,7 +22,7 @@ const Login = () => {
       //   });
       //   console.log(response);
       const res = await axios.post(
-        '/api/auth/login',
+        'http://bejewelled-zuccutto-dfa6b6.netlify.app/api/auth/login',
         {
           email,
           password,
