@@ -27,7 +27,7 @@ const Login = () => {
           email,
           password,
         },
-        { withCredentials: true, credentials: 'include', headers: { 'Content-Type': 'text/plain' } }
+        { withCredentials: true, credentials: 'include' }
       );
 
       navigate('/');
