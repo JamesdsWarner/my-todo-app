@@ -12,7 +12,7 @@ const Register = () => {
     };
     try {
       await axios.post(
-        'https://my-todo-app-back-production.up.railway.app/api/auth/register',
+        'https://todo-back.herokuapp.com/api/auth/register',
         user,
         { withCredentials: true, credentials: 'include' }
       );
